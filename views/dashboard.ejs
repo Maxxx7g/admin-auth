@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav>
+        <h1>Admin Dashboard</h1>
+        <a href="/logout" class="btn logout">Logout</a>
+    </nav>
+
+    <div class="container">
+        <% if (error) { %>
+            <div class="alert error"><%= error %></div>
+        <% } %>
+        <% if (success) { %>
+            <div class="alert success"><%= success %></div>
+        <% } %>
+
+        <div class="card">
+            <h3>Add New User</h3>
+            <form action="/add-user" method="POST" class="inline-form">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="text" name="password" placeholder="Password" required>
+                <input type="number" name="validity" placeholder="Validity (Days)" value="30" required>
+                <button type="submit" class="btn primary">Add User</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>User List</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>HWID</th>
+                            <th>Validity</th>
+                            <th>Bind Date</th>
+                            <th>Blacklist</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% users.forEach(user => { %>
+                            <tr>
+                                <td><%= user.username %></td>
+                                <td>
+                                    <form action="/edit-password" method="POST" style="display: flex; gap: 5px;">
+                                        <input type="hidden" name="username" value="<%= user.username %>">
+                                        <input type="text" name="password" value="<%= user.password %>" style="width: 100px;">
+                                        <button type="submit" class="btn sm">Save</button>
+                                    </form>
+                                </td>
+                                <td><%= user.hwid ? user.hwid.substring(0, 10) + '...' : 'None' %></td>
+                                <td>
+                                    <form action="/change-validity" method="POST" style="display: flex; gap: 5px;">
+                                        <input type="hidden" name="username" value="<%= user.username %>">
+                                        <input type="number" name="validity" value="<%= user.validity %>" style="width: 60px;">
+                                        <button type="submit" class="btn sm">Save</button>
+                                    </form>
+                                </td>
+                                <td><%= user.bind_date || 'N/A' %></td>
+                                <td>
+                                    <form action="/toggle-blacklist" method="POST">
+                                        <input type="hidden" name="username" value="<%= user.username %>">
+                                        <button type="submit" class="btn <%= user.blacklist == 1 ? 'danger' : 'success' %> sm">
+                                            <%= user.blacklist == 1 ? 'Unban' : 'Ban' %>
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <div class="actions">
+                                        <form action="/reset-hwid" method="POST">
+                                            <input type="hidden" name="username" value="<%= user.username %>">
+                                            <button type="submit" class="btn warning sm">Reset HWID</button>
+                                        </form>
+                                        <form action="/delete-user" method="POST" onsubmit="return confirm('Delete user <%= user.username %>?');">
+                                            <input type="hidden" name="username" value="<%= user.username %>">
+                                            <button type="submit" class="btn danger sm">Delete</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
