@@ -6,10 +6,77 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fira+Code:wght@300..700&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Oxanium:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- Updated fonts: Added premium selections like Playfair Display for elegance, Montserrat for modernity -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- Added Tailwind CSS CDN for rapid premium styling (utility-first, responsive, modern) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Elen X Auth</title>
+    <style>
+      /* Custom premium styles: Glassmorphism, gradients, smooth animations */
+      body {
+        background: linear-gradient(135deg, #1e3c72, #2a5298); /* Deep premium blue gradient */
+        color: #ffffff;
+        font-family: 'Montserrat', sans-serif;
+        overflow: hidden;
+      }
+      #root {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(10px); /* Glassmorphism effect */
+      }
+      /* Premium button example */
+      .premium-btn {
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .premium-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+      /* Add subtle animations */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .fade-in {
+        animation: fadeIn 1s ease-out;
+      }
+    </style>
   </head>
-  <body>
-    <div id="root"></div>
+  <body class="antialiased">
+    <div id="root" class="p-8">
+      <!-- Example premium UI structure: Hero section with auth prompt -->
+      <div class="max-w-md mx-auto bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20 fade-in">
+        <h1 class="text-4xl font-bold text-center mb-6 font-['Playfair_Display'] tracking-wide">Elen X Auth</h1>
+        <p class="text-center text-lg mb-8 opacity-90">Secure. Elegant. Premium Authentication Experience.</p>
+        
+        <!-- Premium login form -->
+        <form class="space-y-6">
+          <div>
+            <label for="email" class="block text-sm font-medium">Email</label>
+            <input type="email" id="email" class="mt-1 block w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white placeholder-gray-300" placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="password" class="block text-sm font-medium">Password</label>
+            <input type="password" id="password" class="mt-1 block w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white placeholder-gray-300" placeholder="••••••••" />
+          </div>
+          <button type="submit" class="premium-btn w-full py-3 px-4 rounded-lg text-white font-semibold text-lg">Sign In Securely</button>
+        </form>
+        
+        <div class="mt-6 text-center text-sm opacity-75">
+          <a href="#" class="hover:underline">Forgot Password?</a> | <a href="#" class="hover:underline">Create Account</a>
+        </div>
+        
+        <!-- Premium footer -->
+        <footer class="mt-8 text-center text-xs opacity-60">
+          © 2025 Elen X Auth. All rights reserved. Powered by Premium Tech.
+        </footer>
+      </div>
+    </div>
+    <!-- Retained original script, but enhance with premium libs if needed (e.g., add Framer Motion for animations via CDN) -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
