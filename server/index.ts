@@ -2,13 +2,12 @@ import express from "express";
 import session from "express-session";
 import path from "path";
 import axios from "axios";
-import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = process.cwd();
 
 const app = express();
 const PORT = parseInt(process.env.PORT || "5000");
+
 
 // GitHub Configuration
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
